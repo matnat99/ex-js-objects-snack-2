@@ -140,3 +140,35 @@ In console verranno stampati per due volte "Chef Hyur" e "Hyur's II"
 Quanti oggetti sono stati creati in memoria durante l'esecuzione di questo codice?
 5
 */
+
+//  Code Question 6 (Bonus)
+
+{
+  const chef = {
+    name: "Chef Hyur",
+    age: 29,
+    makeBurger: (num = 1) => {
+      console.log(`Ecco ${num} hamburger per te!`);
+    },
+    restaurant: {
+      name: "Hyur's Burgers",
+      welcomeClient: () => {
+        console.log("Benvenuto!");
+      },
+      address: {
+        street: "Main Street",
+        number: 123,
+        showAddress: () => {
+          console.log("Main Street 123");
+        },
+      },
+      isOpen: true,
+    },
+  };
+}
+
+/*
+Qual è il metodo migliore per clonare l’oggetto chef, e perché?
+Il metodo migliore per clonare l'oggetto chef è la shallow copy perché è l'unica a poter copiare funzioni e metodi,
+ma in questo caso bisogna sfruttarla per fare una copia su più livelli
+*/
