@@ -172,3 +172,53 @@ Qual è il metodo migliore per clonare l’oggetto chef, e perché?
 Il metodo migliore per clonare l'oggetto chef è la shallow copy perché è l'unica a poter copiare funzioni e metodi,
 ma in questo caso bisogna sfruttarla per fare una copia su più livelli
 */
+
+/*
+Snack  (Bonus)
+Crea una funzione che permette la copia profonda (deep copy) di un oggetto, che copia anche i suoi metodi (proprietà che contengono funzioni). 
+Usa l’oggetto di Code Question 6 come test.
+
+⚠️ Serve usare una funzione ricorsiva! (fai un po’ di ricerca).
+*/
+
+const chef = {
+  name: "Chef Hyur",
+  age: 29,
+  makeBurger: (num = 1) => {
+    console.log(`Ecco ${num} hamburger per te!`);
+  },
+  restaurant: {
+    name: "Hyur's Burgers",
+    welcomeClient: () => {
+      console.log("Benvenuto!");
+    },
+    address: {
+      street: "Main Street",
+      number: 123,
+      showAddress: () => {
+        console.log("Main Street 123");
+      },
+    },
+    isOpen: true,
+  },
+};
+
+function deepCopy(obj) {
+  if (typeof obj !== "object") {
+    return obj;
+  }
+  const copy = {};
+  for (const key in obj) {
+    const value = obj[key];
+    if (typeof value !== "object") {
+      copy[key] = value;
+    } else {
+      copy[key] = deepCopy(value);
+    }
+  }
+  return copy;
+}
+
+const chefCopy = deepCopy(chef);
+
+console.log(chefCopy);
